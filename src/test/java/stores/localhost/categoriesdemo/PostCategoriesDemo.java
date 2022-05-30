@@ -11,7 +11,7 @@ public class PostCategoriesDemo extends Testbase {
     @Test
     public void postcategoriesDemo() {
         CategoriesPojo categoriesPojo = new CategoriesPojo();
-        categoriesPojo.setId("01011abcd");
+        categoriesPojo.setId("01011abc");
         categoriesPojo.setName("Gift shop");
 
         Response response = given()

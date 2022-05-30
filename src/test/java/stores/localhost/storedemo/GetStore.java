@@ -54,13 +54,12 @@ public class GetStore extends Testbase {
 //        9. Get all the services of 8 the store
         List<Object> allservices = response.then().extract().path("data.findAll{it.id==8}.services");
         System.out.println("009 Store services value is : " + allservices);
-
 //        10. Get storeservices of the store where service name = Windows Store
-        List<Object> storeservices = response.then().extract().path("data.find{it.services}.services.findAll{it.name='Windows Store'}.storeservices");
+        List<Object> storeservices = response.then().extract().path("data.find{it.services}.services.findAll{it.name=='Windows Store'}.storeservices");
         System.out.println("010 Services value is : " +storeservices);
 
 //        11. Get all the storeId of all the store
-        List<Object> allstoreid1 = response.then().extract().path("data.id");
+        List<Object> allstoreid1 = response.then().extract().path("data.services.storeservices.storeId");
         System.out.println("011 Store id services value is : " + allstoreid1);
 
 //        12. Get id of all the store
@@ -76,7 +75,7 @@ public class GetStore extends Testbase {
         System.out.println("014 Total number of service  value is : " +totalnumberservice.size());
 
 //        15. Find the createdAt for all services whose name = “Windows Store”
-        List<Object> createdAt = response.then().extract().path("data.find{it.services}.services.findAll{it.name=='Windows Store'| it.storeservices=='createdAt'}");
+        List<Object> createdAt = response.then().extract().path("data.find{it.services}.services.findAll{it.name=='Windows Store'}.storeservices.createdAt");
         System.out.println("015 CreatedAt of service  value is : " +createdAt);
 
 //        16. Find the name of all services Where store name = “Fargo”
@@ -93,7 +92,7 @@ public class GetStore extends Testbase {
         System.out.println("018 Zip store name of service  value is : " +zipstorename);
 
 //        19. Find the storeservices details of the service name = Magnolia Home Theater
-        List<Object> storeservices1 = response.then().extract().path("data.find{it.services}.services.findAll{it.name='Magnolia Home Theater'}.storeservices");
+        List<Object> storeservices1 = response.then().extract().path("data.find{it.services}.services.findAll{it.name=='Magnolia Home Theater'}.storeservices");
         System.out.println("019 Services value is : " +storeservices1);
 
 //        20. Find the lat of all the stores
